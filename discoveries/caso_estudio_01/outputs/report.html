@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Descubrimiento - Caso Estudio 01</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+    </script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e67e22;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f7f6;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        h1 { margin: 0; font-size: 2.5em; }
+        h2 { color: var(--secondary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px; margin-top: 40px; }
+        .card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .card h3 { margin-top: 0; color: var(--primary); }
+        .tag { display: inline-block; background: var(--light); padding: 2px 8px; border-radius: 4px; font-size: 0.85em; margin-bottom: 10px; }
+        .gate-status { font-weight: bold; padding: 10px; border-radius: 5px; text-align: center; margin: 20px 0; }
+        .gate-success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: white; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #ddd; }
+        th { background-color: var(--secondary); color: white; }
+        .mermaid { background: white; padding: 20px; border-radius: 8px; border: 1px solid #ddd; }
+        footer { text-align: center; margin-top: 50px; font-size: 0.9em; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Discovery Report</h1>
+    <p>Caso de Estudio 01: Optimización de Agenda Clínica</p>
+</header>
+
+<section id="summary">
+    <h2>Resumen Ejecutivo</h2>
+    <p>Este reporte detalla los hallazgos del proceso de descubrimiento para la clínica, enfocado en resolver la ineficiencia del agendamiento manual y la alta tasa de inasistencia (no-show).</p>
+    <div class="gate-status gate-success">
+        ✓ Readiness-Gate: SUPERADO | ✓ Hypothesis-Gate: SUPERADO
+    </div>
+</section>
+
+<section id="personas">
+    <h2>Arquetipos (Personas)</h2>
+    <div class="card-container">
+        <div class="card">
+            <h3>J. (Paciente Recurrente)</h3>
+            <span class="tag">Usuario Final</span>
+            <p><strong>Dolor:</strong> Dificultad para llamar en horario laboral y olvido de citas por falta de recordatorios.</p>
+            <p><strong>Necesidad:</strong> Canal asincrónico (WhatsApp) y recordatorios digitales.</p>
+        </div>
+        <div class="card">
+            <h3>M. (Recepcionista)</h3>
+            <span class="tag">Operador Core</span>
+            <p><strong>Dolor:</strong> Alta carga operativa manual (1.5h/día en recordatorios) y saturación telefónica.</p>
+            <p><strong>Necesidad:</strong> Automatización y sincronización de agenda.</p>
+        </div>
+        <div class="card">
+            <h3>Dra. S. (Médico)</h3>
+            <span class="tag">Stakeholder / Proveedor</span>
+            <p><strong>Dolor:</strong> Pérdida de productividad por no-shows (15-30%) e imposibilidad de ver agenda remota.</p>
+            <p><strong>Necesidad:</strong> Acceso móvil y reducción de huecos no avisados.</p>
+        </div>
+    </div>
+</section>
+
+<section id="requirements">
+    <h2>Requisitos Clave</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Requisito</th>
+                <th>Fuente</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>RF01</td>
+                <td>Agendamiento Autogestionado</td>
+                <td>Recepcionista / Paciente</td>
+            </tr>
+            <tr>
+                <td>RF03</td>
+                <td>Recordatorios Automatizados</td>
+                <td>Paciente / Recepcionista</td>
+            </tr>
+            <tr>
+                <td>RF05</td>
+                <td>Acceso Remoto Médico</td>
+                <td>Doctora</td>
+            </tr>
+            <tr>
+                <td>RNF01</td>
+                <td>Accesibilidad para Adultos Mayores</td>
+                <td>Perfil Paciente</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="strategy">
+    <h2>Estrategia de Validación (Experimento EXP-003)</h2>
+    <div class="card" style="border-left: 5px solid var(--accent);">
+        <p><strong>Hipótesis:</strong> Si enviamos recordatorios automatizados por WhatsApp, reduciremos la tasa de no-show del 30% al 10% en 1 mes.</p>
+        <p><strong>Métrica de Negocio:</strong> Tasa de inasistencia (no-show rate).</p>
+        <p><strong>Criterio de Éxito:</strong> Reducción absoluta del 20%.</p>
+        <p><strong>Regla de Decisión:</strong> Si > 15% tras 4 semanas, pivotar a llamadas. Si <= 10%, escalar.</p>
+    </div>
+</section>
+
+<section id="process">
+    <h2>Flujo del Proceso de Calidad</h2>
+    <div class="mermaid">
+        graph TD
+            subgraph E[Evidencia]
+                E1[Entrevistas] --> EM[Evidence Map]
+            end
+            EM --> RG{Readiness Gate}
+            RG -- OK --> MVP[MVP Canvas]
+            subgraph V[Validación]
+                MVP --> H[Hipótesis]
+                H --> HG{Hypothesis Gate}
+                HG -- OK --> EB[Experiment Board]
+            end
+            EB --> EXP[Ejecución Piloto]
+            
+            style RG fill:#9f9
+            style HG fill:#9f9
+    </div>
+</section>
+
+<footer>
+    <p>Generado por Discovery Agent (Gemini Edition) - Unidad 1 Ingeniería de Software</p>
+</footer>
+
+</body>
+</html>

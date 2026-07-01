@@ -1,0 +1,49 @@
+{
+  "case": "caso_estudio_01",
+  "evidence": [
+    {
+      "source": "paciente.md",
+      "findings": [
+        "Dificultad de agendamiento en horario laboral",
+        "Olvido de citas por falta de recordatorios",
+        "Preferencia por WhatsApp para comunicación"
+      ]
+    },
+    {
+      "source": "recepcionista.md",
+      "findings": [
+        "Inconsistencia de agenda (papel vs Excel)",
+        "Sobrecarga por llamadas de consulta",
+        "Carga operativa en recordatorios manuales",
+        "Necesidad de autogestión"
+      ]
+    },
+    {
+      "source": "doctora.md",
+      "findings": [
+        "Impacto negativo de no-shows (15%)",
+        "Inaccesibilidad remota a la agenda",
+        "Falta de contexto clínico previo (motivo consulta)",
+        "Necesidad de control soberano sobre disponibilidad"
+      ]
+    }
+  ],
+  "traceability_matrix": {
+    "personas": {
+      "J. (Paciente)": ["paciente.md"],
+      "M. (Recepcionista)": ["recepcionista.md"],
+      "Dra. S. (Médico)": ["doctora.md"]
+    },
+    "requirements": {
+      "RF01": ["recepcionista.md", "paciente.md"],
+      "RF02": ["recepcionista.md"],
+      "RF03": ["paciente.md", "recepcionista.md"],
+      "RF04": ["recepcionista.md"],
+      "RF05": ["doctora.md"],
+      "RF06": ["doctora.md"],
+      "RF07": ["doctora.md"],
+      "RF08": ["doctora.md"],
+      "RNF02": ["paciente.md"]
+    }
+  }
+}

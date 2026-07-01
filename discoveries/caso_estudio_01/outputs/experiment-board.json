@@ -1,0 +1,33 @@
+{
+  "case": "caso_estudio_01",
+  "experiments": [
+    {
+      "id": "EXP-001",
+      "name": "Prueba de Adopción Digital (Concierge)",
+      "assumption": "Los pacientes usarán canales digitales.",
+      "method": "Durante 1 semana, la recepcionista enviará un link de reserva por WhatsApp a cada persona que llame pidiendo cita, indicando que 'por ahí es más rápido'.",
+      "metric": "Ratio de clics y conversiones en el link vs. llamadas finalizadas.",
+      "success_threshold": "50% de conversión.",
+      "status": "PLANNED"
+    },
+    {
+      "id": "EXP-002",
+      "name": "Piloto de Recordatorios con Link de Cancelación",
+      "assumption": "El link de cancelación reduce el no-show.",
+      "method": "Implementar un bot básico de WhatsApp que envíe recordatorios con botones de 'Confirmar' y 'Cancelar' a un grupo de 50 pacientes.",
+      "metric": "Tasa de liberación de turnos (cancelaciones avisadas) vs. turnos perdidos sin aviso.",
+      "success_threshold": "Reducción del 50% en huecos no avisados.",
+      "status": "PLANNED"
+    },
+    {
+      "id": "EXP-003",
+      "name": "Piloto de Recordatorios Automatizados (WhatsApp)",
+      "assumption": "Los pacientes olvidan sus citas por falta de recordatorios modernos.",
+      "method": "Envío de mensajes automatizados de WhatsApp a 50 pacientes seleccionados aleatoriamente durante 4 semanas.",
+      "metric": "Tasa de inasistencia (no-show rate).",
+      "success_threshold": "Reducción del 30% al 10% (20% absoluto).",
+      "status": "READY_TO_START",
+      "failure_action": "Pivotar a recordatorios por llamada telefónica si el no-show > 15%."
+    }
+  ]
+}

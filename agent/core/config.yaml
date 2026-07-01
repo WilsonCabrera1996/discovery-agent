@@ -1,0 +1,13 @@
+agent:
+  name: DiscoveryAgent
+  version: 0.1.0
+  skills_path: ./agent/skills
+  core_path: ./agent/core
+
+llm:
+  model: gemini-1.5-pro
+  temperature: 0.2
+
+discovery:
+  output_dir: outputs
+  interviews_dir: interviews
